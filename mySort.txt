@@ -1,0 +1,64 @@
+Sorting algorithm we chose: Heap sort
+
+Heap sort is a fast sorting algorithm with the worst/average/best case time complexity of O(n log n)
+Heap sort works by building heaps using the array and then calls heapify to correctly build the max heap recursively.  It will then remove the minimum element of the heap and recursively call to continue until the full array has been fully sorted.
+
+Step by step/psuedocode:
+
+Call heapify method to build max heap
+
+loops from end of array to beginning, each iteration swaps first element with the last element of the heap
+
+reduces heap size by 1
+
+calls heapify to maintain the max heap
+
+loop continues until array is sorted
+
+
+psuedocode:
+
+build the heap on the base array using a loop
+call heapify to build the max heap using that array
+
+(in the heapify method) initialize the root as the max element
+initialize left child and right child of the tree
+if left child or right child is greater than the max, swap the max with the left or right
+swap elements in the tree if the root is not the max
+recursively call heapify on the affected tree
+
+(back in the heapsort method)
+when heapify is done on iterations extract the elements from the heap
+call heapify on the reduced heap
+
+---------------------------------------- psuedocode again with operations underneath
+
+heapsort:
+-initialize n to array length 
+	- 1 operation
+-starting from array midpoint, work down towards beginning
+	-1 operation, 1 comparison, n/2 decrements (1 arithmetic, 1 assignment), n/2 comparisons
+-for each element, call heapify method with the array, n, and the current element as the root
+
+-starting from last element, work towards beginning of the array
+	-1 assignment 1 comparison.  n decrements (1 arithmetic, 1 assignment), n comparisons
+-for each element
+  	-swap first element with current
+		-3 assignments
+ 	 -decrease heap size by 1 (called in the decrement.  not a new operation)
+  	- call heapify on reduced heap, updated size, and first element as root
+
+heapify:
+
+-initialize root as the largest element
+	-1 assignment
+-initialize left and right children of root
+	-2 assignment
+-if left child is smaller than n and smaller than largest element, set left element=largest
+	-1 comparison for compairson type, 1 compare with largest and n, 1 compare with compare object and <=0 , 1 assignment if true 
+-if right child is smaller than n and smaller than largest element, set left element=largest
+ 	-1 comparison for compairson type, 1 compare with largest and n, 1 compare with compare object and <=0 , 1 assignment if true
+-if the root is not the largest, swap the root and the largest element
+	-1 comparison with largest and root, if true -> 3 assignments for swapping 
+-call heapify with the affected tree, n, and largest element as the root
+	
